@@ -1,3 +1,5 @@
+kodilla-testing/build/
+kodilla-testing/out/
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
