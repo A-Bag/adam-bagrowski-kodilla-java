@@ -9,24 +9,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionTestSuite {
+    OddNumbersExterminator oddNumbersExterminator;
+    List<Integer> numbers;
+
     @Before
     public void before(){
         System.out.println("Test Case: begin");
+        oddNumbersExterminator = new OddNumbersExterminator();
+        numbers = new ArrayList<>();
     }
+
     @After
     public void after(){
         System.out.println("Test Case: end");
     }
+
     @Test
     public void testOddNumbersExterminatorNormalList(){
         //Arrange
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> numbers = new ArrayList<>();
         for (int i=0; i<100; i++){
             numbers.add(i);
         }
         List<Integer> evenNumbers = new ArrayList<>();
-        for (int i=0; i<100; i=i+2){
+        for (int i=0; i<100; i+=2){
             evenNumbers.add(i);
         }
         //Act
@@ -34,14 +39,13 @@ public class CollectionTestSuite {
         //Assert
         Assert.assertEquals(evenNumbers, result);
     }
+
     @Test
     public void testOddNumbersExterminatorEmptyList(){
         //Arrange
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> emptyList = new ArrayList<>();
         //Act
-        List<Integer> result = oddNumbersExterminator.exterminate(emptyList);
+        List<Integer> result = oddNumbersExterminator.exterminate(numbers);
         //Assert
-        Assert.assertEquals(emptyList, result);
+        Assert.assertEquals(numbers, result);
     }
 }
