@@ -24,7 +24,7 @@ public class ForumStatistics {
                 "\nAverage posts count per user: " + String.format(Locale.ROOT,"%.2f", avgPostsCountPerUser) +
                 "\nAverage comments count per user: " + String.format(Locale.ROOT,"%.2f", avgCommentsCountPerUser) +
                 "\nAverage comments count per post: " + String.format(Locale.ROOT,"%.2f", avgCommentsCountPerPost);
-        System.out.println(statistics);
+        //System.out.println(statistics);
         return statistics;
     }
 }
