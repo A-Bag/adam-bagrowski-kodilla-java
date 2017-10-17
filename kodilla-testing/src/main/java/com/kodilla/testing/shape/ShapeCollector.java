@@ -11,11 +11,7 @@ public class ShapeCollector {
     }
 
     public boolean removeFigure(Shape shape){
-        if (!figures.contains(shape)) {
-            return false;
-        }
-        figures.remove(shape);
-        return true;
+        return figures.remove(shape);
     }
 
     public Shape getFigure(int n){
@@ -26,11 +22,11 @@ public class ShapeCollector {
     }
 
     public String showFigures(){
-        String showedFigures = "";
+        StringBuilder showedFigures = new StringBuilder();
         for(Shape figure: figures) {
-            showedFigures += figure + "/n";
+            showedFigures.append(figure + "/n");
         }
-        return showedFigures;
+        return showedFigures.toString();
     }
 
     public int getFiguresQuantity(){

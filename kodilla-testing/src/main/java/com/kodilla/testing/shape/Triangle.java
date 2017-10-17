@@ -1,8 +1,8 @@
 package com.kodilla.testing.shape;
 
 public class Triangle implements Shape {
-    double a;
-    double h;
+    private double a;
+    private double h;
 
     public Triangle(double a, double h) {
         this.a = a;
@@ -23,5 +23,16 @@ public class Triangle implements Shape {
                 "a=" + a +
                 ", h=" + h +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Triangle triangle = (Triangle) o;
+
+        if (Double.compare(triangle.a, a) != 0) return false;
+        return Double.compare(triangle.h, h) == 0;
     }
 }

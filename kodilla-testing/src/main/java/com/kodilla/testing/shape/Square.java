@@ -1,8 +1,8 @@
 package com.kodilla.testing.shape;
 
 public class Square implements Shape {
-    double a;
-    double b;
+    private double a;
+    private double b;
 
     public Square(double a, double b) {
         this.a = a;
@@ -23,5 +23,16 @@ public class Square implements Shape {
                 "a=" + a +
                 ", b=" + b +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Square square = (Square) o;
+
+        if (Double.compare(square.a, a) != 0) return false;
+        return Double.compare(square.b, b) == 0;
     }
 }
