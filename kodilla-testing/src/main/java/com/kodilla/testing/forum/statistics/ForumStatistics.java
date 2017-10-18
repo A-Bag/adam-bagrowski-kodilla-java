@@ -16,7 +16,7 @@ public class ForumStatistics {
         commentsCount = statistics.getCommentsCount();
         avgPostsCountPerUser = usersCount != 0 ? (double)postsCount/usersCount : -1.0;
         avgCommentsCountPerUser = usersCount != 0 ? (double)commentsCount/usersCount : -1.0;
-        avgCommentsCountPerPost = usersCount != 0 ? (double)commentsCount/postsCount : -1.0;
+        avgCommentsCountPerPost = postsCount != 0 ? (double)commentsCount/postsCount : -1.0;
     }
 
     public String showStatistics () {
