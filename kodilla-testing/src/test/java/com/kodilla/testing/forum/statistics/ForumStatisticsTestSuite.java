@@ -19,6 +19,10 @@ public class ForumStatisticsTestSuite {
     public void beforeEveryTest() {
         statistics = mock(Statistics.class);
         forumStatistics = new ForumStatistics();
+        List<String> userNames = generateUserNameList (100);
+        when(statistics.getUsersNames()).thenReturn(userNames);
+        when(statistics.getCommentsCount()).thenReturn(100);
+        when(statistics.getPostsCount()).thenReturn(100);
         testCounter++;
         System.out.println("Preparing to execute test #" + testCounter);
     }
@@ -26,11 +30,6 @@ public class ForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvStatisticsDefault(){
         //Arrange
-        List<String> userNames = generateUserNameList (100);
-        when(statistics.getUsersNames()).thenReturn(userNames);
-        when(statistics.getCommentsCount()).thenReturn(100);
-        when(statistics.getPostsCount()).thenReturn(100);
-
         String expectedStatistics = "Users count: " + 100 + "\nPosts count: " + 100 + "\nComments count: " + 100 +
                 "\nAverage posts count per user: " + "1.00" +
                 "\nAverage comments count per user: " + "1.00" +
@@ -46,11 +45,7 @@ public class ForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvStatisticsPostsCount0(){
         //Arrange
-        List<String> userNames = generateUserNameList (100);
-        when(statistics.getUsersNames()).thenReturn(userNames);
-        when(statistics.getCommentsCount()).thenReturn(100);
         when(statistics.getPostsCount()).thenReturn(0);
-
         String expectedStatistics = "Users count: " + 100 + "\nPosts count: " + 0 + "\nComments count: " + 100 +
                 "\nAverage posts count per user: " + "0.00" +
                 "\nAverage comments count per user: " + "1.00" +
@@ -66,11 +61,7 @@ public class ForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvPostCount1000(){
         //Arrange
-        List<String> userNames = generateUserNameList (100);
-        when(statistics.getUsersNames()).thenReturn(userNames);
-        when(statistics.getCommentsCount()).thenReturn(100);
         when(statistics.getPostsCount()).thenReturn(1000);
-
         String expectedStatistics = "Users count: " + 100 + "\nPosts count: " + 1000 + "\nComments count: " + 100 +
                 "\nAverage posts count per user: " + "10.00" +
                 "\nAverage comments count per user: " + "1.00" +
@@ -86,11 +77,7 @@ public class ForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvStatisticsCommentsCount0(){
         //Arrange
-        List<String> userNames = generateUserNameList (100);
-        when(statistics.getUsersNames()).thenReturn(userNames);
         when(statistics.getCommentsCount()).thenReturn(0);
-        when(statistics.getPostsCount()).thenReturn(100);
-
         String expectedStatistics = "Users count: " + 100 + "\nPosts count: " + 100 + "\nComments count: " + 0 +
                 "\nAverage posts count per user: " + "1.00" +
                 "\nAverage comments count per user: " + "0.00" +
@@ -106,11 +93,7 @@ public class ForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvStatisticsCommentsCount10(){
         //Arrange
-        List<String> userNames = generateUserNameList (100);
-        when(statistics.getUsersNames()).thenReturn(userNames);
         when(statistics.getCommentsCount()).thenReturn(10);
-        when(statistics.getPostsCount()).thenReturn(100);
-
         String expectedStatistics = "Users count: " + 100 + "\nPosts count: " + 100 + "\nComments count: " + 10 +
                 "\nAverage posts count per user: " + "1.00" +
                 "\nAverage comments count per user: " + "0.10" +
@@ -126,11 +109,7 @@ public class ForumStatisticsTestSuite {
     @Test
     public void testCalculateAdvStatisticsCommentsCount1000(){
         //Arrange
-        List<String> userNames = generateUserNameList (100);
-        when(statistics.getUsersNames()).thenReturn(userNames);
         when(statistics.getCommentsCount()).thenReturn(1000);
-        when(statistics.getPostsCount()).thenReturn(100);
-
         String expectedStatistics = "Users count: " + 100 + "\nPosts count: " + 100 + "\nComments count: " + 1000 +
                 "\nAverage posts count per user: " + "1.00" +
                 "\nAverage comments count per user: " + "10.00" +
@@ -148,9 +127,6 @@ public class ForumStatisticsTestSuite {
         //Arrange
         List<String> userNames = generateUserNameList (0);
         when(statistics.getUsersNames()).thenReturn(userNames);
-        when(statistics.getCommentsCount()).thenReturn(100);
-        when(statistics.getPostsCount()).thenReturn(100);
-
         String expectedStatistics = "Users count: " + 0 + "\nPosts count: " + 100 + "\nComments count: " + 100 +
                 "\nAverage posts count per user: " + "-1.00" +
                 "\nAverage comments count per user: " + "-1.00" +
