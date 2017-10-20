@@ -13,10 +13,10 @@ public class StreamMain {
     public static void main(String[] args) {
         Forum forum = new Forum();
         Map<Integer, ForumUser> filteredUsersMap = forum.getUsersList().stream()
-                .filter(ForumUser -> ForumUser.getUserSex() == 'M')
-                .filter(ForumUser -> ChronoUnit.YEARS.between(ForumUser.getBirthDate(),LocalDate.now(ZoneId.of("Europe/Paris"))) >= 20)
-                .filter(ForumUser -> ForumUser.getPostCount() >= 1)
-                .collect(Collectors.toMap(ForumUser::getUserId, ForumUser -> ForumUser));
+                .filter(forumUser -> forumUser.getUserSex() == 'M')
+                .filter(forumUser -> ChronoUnit.YEARS.between(forumUser.getBirthDate(),LocalDate.now(ZoneId.of("Europe/Paris"))) >= 20)
+                .filter(forumUser -> forumUser.getPostCount() >= 1)
+                .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
 
         System.out.println("# elements: " + filteredUsersMap.size());
         filteredUsersMap.entrySet().stream()

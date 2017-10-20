@@ -6,9 +6,6 @@ public final class ForumUser {
     private final int userId;
     private final String userName;
     private final char userSex;
-    private final int birthYear;
-    private final int birthMonth;
-    private final int birthDay;
     private final LocalDate birthDate;
     private final int postCount;
 
@@ -17,9 +14,6 @@ public final class ForumUser {
         this.userId = userId;
         this.userName = userName;
         this.userSex = userSex;
-        this.birthDay = birthDay;
-        this.birthMonth = birthMonth;
-        this.birthYear = birthYear;
         this.postCount = postCount;
         this.birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
     }
