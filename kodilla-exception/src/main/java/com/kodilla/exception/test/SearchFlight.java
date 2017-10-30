@@ -8,14 +8,12 @@ public class SearchFlight {
         Map<String, Boolean> airports = new HashMap<>();
         airports.put("Warsaw", true);
         airports.put("London", false);
-        if(airports.containsKey(flight.getArrivalAirport())) {
-            if(airports.get(flight.getArrivalAirport())) {
-                System.out.println("Arrival airport accessible!");
-            } else {
-                System.out.println("Arrival airport not accessible!");
-            }
-        } else {
+        if(airports.get(flight.getArrivalAirport()) == null) {
             throw new RouteNotFoundException();
+        } else if(airports.get(flight.getArrivalAirport())) {
+            System.out.println("Arrival airport accessible!");
+        } else {
+            System.out.println("Arrival airport not accessible!");
         }
     }
 }
