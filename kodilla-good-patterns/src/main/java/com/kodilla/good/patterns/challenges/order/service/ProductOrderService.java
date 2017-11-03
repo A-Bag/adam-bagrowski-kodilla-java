@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.order.service;
 
 public class ProductOrderService {
     private InformationService informationService;
@@ -14,8 +14,7 @@ public class ProductOrderService {
     }
 
     public void process(OrderRequest orderRequest) {
-        AbcOrderingService abcOrderingService = new AbcOrderingService();
-        boolean isOrderCreated = abcOrderingService.createOrder(
+        boolean isOrderCreated = orderingService.createOrder(
                 orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getDateOfOrder());
 
         if(isOrderCreated) {

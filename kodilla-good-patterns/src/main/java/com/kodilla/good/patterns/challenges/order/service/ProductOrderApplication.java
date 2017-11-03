@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.order.service;
 
 
 public class ProductOrderApplication {
@@ -7,7 +7,7 @@ public class ProductOrderApplication {
         OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
         ProductOrderService productOrderService = new ProductOrderService(
-                new SmsService(), new AbcOrderingService(), new XyzProductOrderRepository());
+                new SmsService(), new WebOrderingService(), new DBProductOrderRepository());
         productOrderService.process(orderRequest);
     }
 }
