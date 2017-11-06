@@ -1,18 +1,32 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-public class OrderService {
-    Order order;
+import com.kodilla.good.patterns.challenges.food2door.history.service.HistoryService;
+import com.kodilla.good.patterns.challenges.food2door.information.service.EmaiInformationService;
+import com.kodilla.good.patterns.challenges.food2door.information.service.InformationService;
 
-    public OrderService(Order order) {
-        this.order = order;
+import java.util.List;
+
+public class OrderService {
+    private List<Order> listOfOrders;
+    private InformationService informationService;
+    private HistoryService historyService;
+
+    public OrderService(List<Order> listOfOrders, InformationService informationService, HistoryService historyService) {
+        this.listOfOrders = listOfOrders;
+        this.informationService = informationService;
+        this.historyService = historyService;
     }
 
     public void process() {
-        boolean isOrderCompleted = order.getProducer().process();
-        if (isOrderCompleted) {
-            System.out.println("Order completed!");
-        } else {
-            System.out.println("Processing failed!");
+        for (Order order: listOfOrders) {
+            boolean isOrderCompleted = order.getProducer().process();
+            if (isOrderCompleted) {
+                informationService.sendMessage();
+                historyService.addOrderToTheOrderHistory(order);
+                System.out.println("Order completed!\n");
+            } else {
+                System.out.println("Processing failed!\n");
+            }
         }
     }
 }
