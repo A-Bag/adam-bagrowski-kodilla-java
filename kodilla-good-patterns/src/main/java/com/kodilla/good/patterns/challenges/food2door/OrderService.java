@@ -1,7 +1,6 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
 import com.kodilla.good.patterns.challenges.food2door.history.service.HistoryService;
-import com.kodilla.good.patterns.challenges.food2door.information.service.EmaiInformationService;
 import com.kodilla.good.patterns.challenges.food2door.information.service.InformationService;
 
 import java.util.List;
