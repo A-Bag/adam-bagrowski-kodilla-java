@@ -6,17 +6,15 @@ import com.kodilla.good.patterns.challenges.food2door.information.service.Inform
 import java.util.List;
 
 public class OrderService {
-    private List<Order> listOfOrders;
     private InformationService informationService;
     private HistoryService historyService;
 
-    public OrderService(List<Order> listOfOrders, InformationService informationService, HistoryService historyService) {
-        this.listOfOrders = listOfOrders;
+    public OrderService(InformationService informationService, HistoryService historyService) {
         this.informationService = informationService;
         this.historyService = historyService;
     }
 
-    public void process() {
+    public void process(List<Order> listOfOrders) {
         for (Order order: listOfOrders) {
             boolean isOrderCompleted = order.getProducer().process();
             if (isOrderCompleted) {
