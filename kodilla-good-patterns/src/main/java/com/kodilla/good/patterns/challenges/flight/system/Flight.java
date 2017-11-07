@@ -1,22 +1,21 @@
 package com.kodilla.good.patterns.challenges.flight.system;
 
-import java.util.Arrays;
+import java.time.LocalTime;
 
 public class Flight {
     private String departureAirport;
     private String arrivalAirport;
-    private String[] midAirports;
+    private LocalTime departureTime;
+    private LocalTime arrivalTime;
 
-    public Flight(String departureAirport, String arrivalAirport) {
+    public Flight(String departureAirport, String arrivalAirport, LocalTime departureTime, LocalTime arrivalTime) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
     }
 
-    public Flight(String departureAirport, String arrivalAirport, String... midAirports) {
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
-        this.midAirports = midAirports;
-    }
+
 
     public String getDepartureAirport() {
         return departureAirport;
@@ -26,8 +25,12 @@ public class Flight {
         return arrivalAirport;
     }
 
-    public String[] getMidAirports() {
-        return midAirports;
+    public LocalTime getDepartureTime() {
+        return departureTime;
+    }
+
+    public LocalTime getArrivalTime() {
+        return arrivalTime;
     }
 
     @Override
@@ -37,20 +40,18 @@ public class Flight {
 
         Flight flight = (Flight) o;
 
-        if (midAirports != null) {
-            if (!Arrays.equals(midAirports, flight.midAirports)) return false;
-        }
+        if (!departureAirport.equals(flight.departureAirport)) return false;
         if (!arrivalAirport.equals(flight.arrivalAirport)) return false;
-        return departureAirport.equals(flight.departureAirport);
+        if (!departureTime.equals(flight.departureTime)) return false;
+        return arrivalTime.equals(flight.arrivalTime);
     }
 
     @Override
     public int hashCode() {
         int result = departureAirport.hashCode();
         result = 31 * result + arrivalAirport.hashCode();
-        if (midAirports != null) {
-            result = 31 * result + Arrays.hashCode(midAirports);
-        }
+        result = 31 * result + departureTime.hashCode();
+        result = 31 * result + arrivalTime.hashCode();
         return result;
     }
 }
