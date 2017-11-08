@@ -108,8 +108,6 @@ public class FlightSystemTestSuite {
                         LocalTime.of(12,0), LocalTime.of(14,0)));
         expectedMap.put(new Flight("Warsaw", "Paris",
                 LocalTime.of(7,50), LocalTime.of(10,0)), flightsFromMidToArrivalAirport);
-        expectedMap.put(new Flight("Warsaw", "Paris",
-                LocalTime.of(10,0), LocalTime.of(12,0)), new ArrayList<>());
         Assert.assertEquals(expectedMap, map);
     }
 }
