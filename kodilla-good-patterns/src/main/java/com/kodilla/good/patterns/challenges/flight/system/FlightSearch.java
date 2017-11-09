@@ -2,8 +2,10 @@ package com.kodilla.good.patterns.challenges.flight.system;
 
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class FlightSearch {
@@ -52,19 +54,22 @@ public class FlightSearch {
                 .filter(flight -> flight.getArrivalAirport().equals(arrivalAirport))
                 .collect(Collectors.toList());
 
-        Map<Flight, List<Flight>> eachFlightToMidAirportWithListOfFlightsToArrivalAirport =
-                flightsFromDepartureToMidAirport.stream()
-                        .collect(Collectors.toMap(flightToMid -> flightToMid,
-                                flightToMid -> flightsFromMidToArrivalAirport.stream()
-                                        .filter(flightToArr -> flightToArr.getDepartureTime()
-                                                .isAfter(flightToMid.getArrivalTime()))
-                                        .collect(Collectors.toList())));
-
-        eachFlightToMidAirportWithListOfFlightsToArrivalAirport =
-                eachFlightToMidAirportWithListOfFlightsToArrivalAirport.entrySet().stream()
-                        .filter(entry -> !entry.getValue().isEmpty())
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-        return eachFlightToMidAirportWithListOfFlightsToArrivalAirport;
+        return flightsFromDepartureToMidAirport.stream()
+                .collect(Collector.of(
+                        HashMap<Flight, List<Flight>>::new,
+                        (map, flightToMid) -> {
+                            final List<Flight> flights = flightsFromMidToArrivalAirport.stream()
+                                    .filter(flightToArr -> flightToArr.getDepartureTime()
+                                            .isAfter(flightToMid.getArrivalTime()))
+                                    .collect(Collectors.toList());
+                            if (!flights.isEmpty()) {
+                                map.put(flightToMid, flights);
+                            }
+                        },
+                        (map1, map2) -> {
+                            map1.putAll(map2);
+                            return map1;
+                        }
+                ));
     }
 }
