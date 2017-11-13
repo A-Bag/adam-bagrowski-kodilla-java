@@ -27,12 +27,8 @@ public class Calculator {
     }
 
     public double div(double a, double b) {
-        try {
-            if (b == 0) {
-                throw new ArithmeticException();
-            }
-        } catch (ArithmeticException e) {
-            System.out.println("Error: " + e + "\nDo not divide by zero!");
+        if (b == 0) {
+            System.out.println("Do not divide by zero!");
             return -1;
         }
         double result = a / b;
