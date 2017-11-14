@@ -11,13 +11,13 @@ public class BoardTestSuite {
         //Arrange
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = (Board)context.getBean("getBoard");
-        board.toDoList.addTask("task1");
-        board.inProgressList.addTask("task2");
-        board.doneList.addTask("task3");
+        board.addTaskToToDoList("task1");
+        board.addTaskToInProgressList("task2");
+        board.addTaskToDoneList("task3");
         //Act
-        String toDoTask = board.toDoList.getLastTask();
-        String inProgressTask = board.inProgressList.getLastTask();
-        String doneTask = board.doneList.getLastTask();
+        String toDoTask = board.getLastTaskFromToDoList();
+        String inProgressTask = board.getLastTaskFromInProgressList();
+        String doneTask = board.getLastTaskFromDoneList();
         //Assert
         Assert.assertEquals("task1", toDoTask);
         Assert.assertEquals("task2", inProgressTask);
