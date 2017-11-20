@@ -1,4 +1,4 @@
-package com.kodilla.patterns.tasks;
+package com.kodilla.patterns.factory.tasks;
 
 public class DrivingTask implements Task {
     private String taskName;

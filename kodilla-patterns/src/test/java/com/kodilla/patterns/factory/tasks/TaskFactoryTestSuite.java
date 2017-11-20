@@ -1,4 +1,4 @@
-package com.kodilla.patterns.tasks;
+package com.kodilla.patterns.factory.tasks;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -46,5 +46,15 @@ public class TaskFactoryTestSuite {
         //Assert
         Assert.assertEquals(true, painting.isTaskExecuted());
         Assert.assertEquals("Painting", painting.getTaskName());
+    }
+
+    @Test
+    public void testNoTask() {
+        //Arrange
+        //Act
+        Task noTask = taskFactory.createTask("");
+
+        //Assert
+        Assert.assertEquals(null, noTask);
     }
 }

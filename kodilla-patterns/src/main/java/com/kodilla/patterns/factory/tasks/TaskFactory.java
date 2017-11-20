@@ -1,4 +1,4 @@
-package com.kodilla.patterns.tasks;
+package com.kodilla.patterns.factory.tasks;
 
 public final class TaskFactory {
     public static final String SHOPPING = "SHOPPING";
