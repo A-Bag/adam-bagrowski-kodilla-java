@@ -19,8 +19,15 @@ public class BigmacTestSuite {
 
         //Act
         int numberOfIngredients = bigmac.getIngredients().size();
+        String expectedString = "Bigmac{" +
+                "roll='" + "withSesame" + '\'' +
+                ", burgers=" + 1 +
+                ", sauce='" + "barbecue" + '\'' +
+                ", ingredients=" + "[salad, onion, pickle, cheese, bacon, chilli pepper]" +
+                '}';
 
         //Assert
         Assert.assertEquals(6, numberOfIngredients);
+        Assert.assertEquals(expectedString, bigmac.toString());
     }
 }
