@@ -1,4 +1,4 @@
-package com.kodilla.patterns.social;
+package com.kodilla.patterns.strategy.social;
 
 public interface SocialPublisher {
     String share();
