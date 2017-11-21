@@ -3,6 +3,8 @@ package com.kodilla.patterns.builder.bigmac;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class BigmacTestSuite {
     @Test
     public void testBigmacBuilder() {
@@ -19,15 +21,13 @@ public class BigmacTestSuite {
 
         //Act
         int numberOfIngredients = bigmac.getIngredients().size();
-        String expectedString = "Bigmac{" +
-                "roll='" + "withSesame" + '\'' +
-                ", burgers=" + 1 +
-                ", sauce='" + "barbecue" + '\'' +
-                ", ingredients=" + "[salad, onion, pickle, cheese, bacon, chilli pepper]" +
-                '}';
 
         //Assert
         Assert.assertEquals(6, numberOfIngredients);
-        Assert.assertEquals(expectedString, bigmac.toString());
+        Assert.assertEquals(Arrays.asList("salad", "onion", "pickle", "cheese", "bacon", "chilli pepper"),
+                bigmac.getIngredients());
+        Assert.assertEquals("barbecue", bigmac.getSauce());
+        Assert.assertEquals("withSesame", bigmac.getRoll());
+        Assert.assertEquals(1, bigmac.getBurgers());
     }
 }
