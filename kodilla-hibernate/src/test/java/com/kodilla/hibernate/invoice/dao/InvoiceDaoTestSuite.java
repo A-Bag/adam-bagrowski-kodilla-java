@@ -49,13 +49,13 @@ public class InvoiceDaoTestSuite {
         item3.setInvoice(invoice1);
 
         //Act
-        productDao.save(product1);
-        productDao.save(product2);
+        /*productDao.save(product1);
+        productDao.save(product2);*/
         itemDao.save(item1);
         itemDao.save(item2);
         itemDao.save(item3);
-        invoiceDao.save(invoice1);
-        invoiceDao.save(invoice2);
+        /*invoiceDao.save(invoice1);
+        invoiceDao.save(invoice2);*/
 
         //Assert
         Assert.assertEquals(2, productDao.count());
@@ -63,8 +63,8 @@ public class InvoiceDaoTestSuite {
         Assert.assertEquals(2, invoiceDao.count());
 
         //CleanUp
-        /*productDao.deleteAll();
+        productDao.deleteAll();
         itemDao.deleteAll();
-        invoiceDao.deleteAll();*/
+        invoiceDao.deleteAll();
     }
 }
