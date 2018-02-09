@@ -10,6 +10,7 @@ public class CrudAppTestingApp {
     public static final String XPATH_INPUT = "//html/body/main/section/form/fieldset/input";
     public static final String XPATH_TEXTAREA = "//html/body/main/section/form/fieldset[2]/textarea";
     //public static final String XPATH_SELECT = "//div[@class=\"datatable__tasks-container\"]/form[1]/div/fieldset[2]/select[1]";
+    //public static final String XPATH_SELECT = "//select[1]";
     public static final String XPATH_SELECT = "//div[@class=\"datatable__tasks-container\"]/form[@data-task-id=\"13\"]";
 
     public static void main(String[] args) {
@@ -24,8 +25,8 @@ public class CrudAppTestingApp {
 
         while (!driver.findElement(By.xpath(XPATH_SELECT)).isDisplayed());
         WebElement selectCombo = driver.findElement(By.xpath(XPATH_SELECT));
-        //Select selectBoard = new Select(selectCombo);
-        //selectBoard.selectByIndex(1);
+        Select selectBoard = new Select(selectCombo);
+        selectBoard.selectByIndex(1);
     }
 }
 
