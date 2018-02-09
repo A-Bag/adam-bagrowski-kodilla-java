@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class FacebookTestingApp {
-    public static final String XPATH_BIRTHDAY_DAY_SELECT = "//div[@class=\"_5k_5\"]/span/span/select[@name=\"birthday_day\"]";
-    public static final String XPATH_BIRTHDAY_MONTH_SELECT = "//div[@class=\"_5k_5\"]/span/span/select[@name=\"birthday_month\"]";
-    public static final String XPATH_BIRTHDAY_YEAR_SELECT = "//div[@class=\"_5k_5\"]/span/span/select[@name=\"birthday_year\"]";
+    public static final String XPATH_BIRTHDAY_DAY_SELECT = "//select[@name=\"birthday_day\"]";
+    public static final String XPATH_BIRTHDAY_MONTH_SELECT = "//select[@name=\"birthday_month\"]";
+    public static final String XPATH_BIRTHDAY_YEAR_SELECT = "//select[@name=\"birthday_year\"]";
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
