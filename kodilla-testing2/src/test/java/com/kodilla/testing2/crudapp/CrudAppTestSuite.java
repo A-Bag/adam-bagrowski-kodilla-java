@@ -34,13 +34,8 @@ public class CrudAppTestSuite {
     }
 
     private void deleteTaskFromCrudApp(String taskName) throws InterruptedException {
-        WebDriver deleteDriver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
-        deleteDriver.get(BASE_URL);
-
-        while(!deleteDriver.findElement(By.xpath("//select[1]")).isDisplayed());
-        //Thread.sleep(2000);
-
-        deleteDriver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+        driver.switchTo().alert().accept();
+        driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
                 .filter(anyForm ->
                         anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]")).getText().equals(taskName))
                 .forEach(theForm -> {
@@ -48,7 +43,6 @@ public class CrudAppTestSuite {
                             .filter(theButton -> theButton.getText().contains("Delete"))
                             .forEach(theButton -> theButton.click());
                 });
-        deleteDriver.close();
     }
 
     private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException {
