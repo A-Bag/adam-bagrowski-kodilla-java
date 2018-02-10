@@ -4,14 +4,16 @@ import com.kodilla.testing2.config.WebDriverConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CrudAppTestingApp {
     public static final String XPATH_INPUT = "//html/body/main/section/form/fieldset/input";
     public static final String XPATH_TEXTAREA = "//html/body/main/section/form/fieldset[2]/textarea";
-    //public static final String XPATH_SELECT = "//div[@class=\"datatable__tasks-container\"]/form[1]/div/fieldset[2]/select[1]";
-    //public static final String XPATH_SELECT = "//select[1]";
-    public static final String XPATH_SELECT = "//div[@class=\"datatable__tasks-container\"]/form[@data-task-id=\"13\"]";
+    public static final String XPATH_WAIT_FOR = "//div[@data-tasks-container]/form";
+    public static final String XPATH_SELECT = "//div[@data-tasks-container]/form/div/fieldset/select[1]";
+
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
@@ -23,7 +25,8 @@ public class CrudAppTestingApp {
         WebElement textAreaField = driver.findElement(By.xpath(XPATH_TEXTAREA));
         textAreaField.sendKeys("New robotic content");
 
-        while (!driver.findElement(By.xpath(XPATH_SELECT)).isDisplayed());
+        (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(XPATH_WAIT_FOR)));
+
         WebElement selectCombo = driver.findElement(By.xpath(XPATH_SELECT));
         Select selectBoard = new Select(selectCombo);
         selectBoard.selectByIndex(1);
